@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<title>getByClassName</title>
+	<style type="text/css">
+	.first{background-color: #ccc;}
+	.second{background-color: red;}
+	</style>
+	<script type="text/javascript">
+	//通过参数获取同类名节点，参数为父元素和类名
+	function getByClassName(aparent,CName)
+	{
+		var result = new Array();
+		var sele = aparent.getElementsByTagName("*");
+		//alert("获取到的子元素长度:"+sele.length);
+		for (var i =0 ; i <sele.length ; i++) 
+		{
+			//alert(sele[i].nodeName);查看获取到的元素是否正确
+			if(sele[i].className==CName)
+			{
+				result.push(sele[i]);
+			}
+		}
+		//alert(result.length+"个数");查看同类名元素是否全部获取	
+		return result;	
+ 	}
+ 	//获取函数的调用
+ 	var a = new Array();
+ 	window.onload =function()
+ 	{
+ 		a = getByClassName(document.getElementById("main"),"first");
+ 	}
+
+
+ 	function change()
+ 	{
+ 		alert("aaa");
+ 		for(var i=0;i<a.length;i++)
+ 		{
+ 			alert(a[i].className);
+ 			a[i].className ="second";
+ 		}
+ 	}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<li class="first" onclick="change()">1</li>
+		<li class="second">2</li>
+		<li class="first">3</li>
+		<li class="first">4</li>
+	</div>
+</body>
+</html>
